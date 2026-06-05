@@ -5,7 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.*;
 
-public class MoneyScoreboard {
+public class MoneyScoreboardTask {
 
     public static void update(Player p, double money, int kills) {
 
