@@ -3,6 +3,7 @@ package overkill.ah;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.bukkit.inventory.ItemStack;
 
 
 public class AHManager {

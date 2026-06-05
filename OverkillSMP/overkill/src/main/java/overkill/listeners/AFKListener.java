@@ -3,6 +3,7 @@ package overkill.listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import AFKManager;
 
 public class AFKListener implements Listener {
 

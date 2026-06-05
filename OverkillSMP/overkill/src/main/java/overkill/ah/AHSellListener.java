@@ -1,6 +1,6 @@
-package me.dylan.overkill.ah;
+package overkill.ah;
 
-import me.dylan.overkill.utils.PriceFormatter;
+import overkill.utils.PriceFormatter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
