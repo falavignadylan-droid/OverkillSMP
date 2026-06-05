@@ -11,8 +11,8 @@ public class SellItems {
     public static ItemStack sellButton() {
         ItemStack item = new ItemStack(Material.EMERALD_BLOCK);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("§a§lVENDI TUTTO");
-        meta.setLore(List.of("§7Clicca per vendere gli item"));
+        meta.setDisplayName("§a§lSELL ALL");
+        meta.setLore(List.of("§7Click to sell all the items"));
         item.setItemMeta(meta);
         return item;
     }
