@@ -1,7 +1,7 @@
 name: OverkillSMP
 main: me.overkill.Main
 version: 1.0
-api-version: 1.21
+api-version: 26.1.2
 commands:
   ban:
     description: Ban a player with cause and time
