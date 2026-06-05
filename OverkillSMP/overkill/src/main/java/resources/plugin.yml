@@ -17,7 +17,15 @@ commands:
   rtp:
     description: teleports randomly a player
     usage: /rtp
-  
+  ah:
+    description: opens the action house
+    usage: /ah
+  afk:
+    description: makes the player go afk
+    usage: /afk 
+  gemshop:
+    description: opens a GUI to buy spawners with gems.
+    usage: /gemshop
 items:
     AIR: 0
     STONE: 0.5

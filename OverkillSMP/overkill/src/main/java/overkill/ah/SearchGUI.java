@@ -1,4 +1,4 @@
-package me.dylan.overkill.ah;
+package overkill.ah;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package overkill.spec;
+package overkill.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

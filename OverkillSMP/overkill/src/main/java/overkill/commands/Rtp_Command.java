@@ -1,4 +1,4 @@
-package overkill.rtp;
+package overkill.commands;
 
 import org.bukkit.*;
 import org.bukkit.command.Command;

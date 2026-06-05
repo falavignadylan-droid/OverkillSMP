@@ -1,4 +1,4 @@
-package overkill.ah;
+package overkill.listeners;
 
 import overkill.utils.PriceFormatter;
 import net.milkbowl.vault.economy.Economy;

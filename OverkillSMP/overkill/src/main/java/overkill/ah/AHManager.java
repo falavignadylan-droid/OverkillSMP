@@ -12,6 +12,7 @@ public class AHManager {
     public AHManager(AHStorage storage) {
         this.storage = storage;
     }
+    
 
     public AHItem getByItem(ItemStack stack) {
     for (AHItem i : storage.getItems()) {

@@ -8,6 +8,7 @@ public class MoneyScoreboard {
 
     public static void update(Player p, double money, int kills) {
 
+        
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getNewScoreboard();
 
@@ -21,6 +22,7 @@ public class MoneyScoreboard {
         obj.getScore("§cKills: §e" + kills).setScore(3);
         obj.getScore("§aMoney: §e" + money + "$").setScore(2);
         obj.getScore("§f ").setScore(1);
+        obj.getScore("§dGems: §b" + gemManager.getGems(p)).setScore(2);
 
         p.setScoreboard(board);
     }
