@@ -1,4 +1,4 @@
-package me.overkill.commands;
+package overkill.commands;
 
 import me.overkill.Main;
 import org.bukkit.command.Command;
