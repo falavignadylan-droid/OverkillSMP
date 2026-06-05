@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import AHManager;
-import ConfirmBuyGUI;
+import overkill.ah.AHManager;
+import overkill.ah.ConfirmBuyGUI;
 
 public class BuyListener implements Listener {
 

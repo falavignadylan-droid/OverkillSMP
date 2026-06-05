@@ -8,8 +8,8 @@ import org.bukkit.event.*;
 import org.bukkit.event.block.*;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import SpawnerManager;
-import SpawnerGUI;
+import overkill.spawner.SpawnerManager;
+import overkill.spawner.SpawnerGUI;
 
 public class SpawnerListener implements Listener {
 
