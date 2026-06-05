@@ -1,4 +1,4 @@
-package your.plugin.scoreboard;
+package overkill.scoreboard;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

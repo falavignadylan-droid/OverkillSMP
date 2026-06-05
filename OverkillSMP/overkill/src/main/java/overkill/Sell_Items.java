@@ -1,4 +1,4 @@
-package your.plugin.sell;
+package overkill.sell;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

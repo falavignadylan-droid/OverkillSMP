@@ -1,44 +1,58 @@
-package your.plugin; // <-- cambia con il tuo package
+package overkill;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+// -------------------------
 // BAN SYSTEM
-import your.plugin.ban.BanCommand;
-import your.plugin.ban.UnbanCommand;
-import your.plugin.ban.BanListener;
+// -------------------------
+import overkill.ban.BanCommand;
+import overkill.ban.UnbanCommand;
+import overkill.ban.BanListener;
 
-// SELL SYSTEM
-import your.plugin.sell.SellCommand;
-import your.plugin.sell.SellGUI;
-import your.plugin.sell.SellListener;
+// -------------------------
+// RTP SYSTEM
+// -------------------------
+import overkill.rtp.RTPCommand;
 
+// -------------------------
 // SCOREBOARD SYSTEM
-import your.plugin.scoreboard.ScoreboardTask;
-import your.plugin.scoreboard.MoneyScoreboard;
+// -------------------------
+import overkill.scoreboard.ScoreboardTask;
 
-// SPEC SYSTEM
-import your.plugin.spec.SpecCommand;
+// -------------------------
+// AUCTION HOUSE SYSTEM
+// -------------------------
+import overkill.ah.AHStorage;
+import overkill.ah.AHManager;
+import overkill.ah.AHGUI;
+import overkill.ah.AHCommand;
+import overkill.ah.AHSellGUI;
+import overkill.ah.AHSellListener;
+import overkill.ah.ConfirmBuyGUI;
+import overkill.ah.BuyListener;
+import overkill.ah.SearchGUI;
+import overkill.ah.SearchListener;
 
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
+
+import java.io.File;
 
 public class Main extends JavaPlugin {
+
+    // AH SYSTEM
+    private AHStorage ahStorage;
+    private AHManager ahManager;
+    private AHGUI ahGUI;
+    private AHSellGUI ahSellGUI;
 
     @Override
     public void onEnable() {
 
-        saveDefaultConfig();
-
-        // ----- RTP------//
-        getCommand("rtp").setExecutor(new RTPCommand());
+        ConfirmBuyGUI confirmBuyGUI = new ConfirmBuyGUI();
+        getServer().getPluginManager().registerEvents(new BuyListener(ahManager, confirmBuyGUI), this);
 
 
-        // -------------------------
-        // SELL SYSTEM
-        // -------------------------
-        SellGUI sellGUI = new SellGUI();
-        getCommand("sell").setExecutor(new SellCommand(sellGUI));
-        getServer().getPluginManager().registerEvents(new SellListener(getConfig()), this);
+        // Create plugin folder
+        if (!getDataFolder().exists()) getDataFolder().mkdirs();
 
         // -------------------------
         // BAN SYSTEM
@@ -48,29 +62,31 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BanListener(this), this);
 
         // -------------------------
-        // SPEC SYSTEM
+        // RTP SYSTEM
         // -------------------------
-        getCommand("spec").setExecutor(new SpecCommand());
+        getCommand("rtp").setExecutor(new RTPCommand());
 
         // -------------------------
         // SCOREBOARD SYSTEM
         // -------------------------
-        getServer().getPluginManager().registerEvents(this, this);
         new ScoreboardTask().runTaskTimer(this, 20L, 20L);
 
-        getLogger().info("Overkill SMP Plugin attivato!");
+        // -------------------------
+        // AUCTION HOUSE SYSTEM
+        // -------------------------
+        ahStorage = new AHStorage(new File(getDataFolder(), "auction.json"));
+        ahManager = new AHManager(ahStorage);
+        ahGUI = new AHGUI(ahManager);
+        ahSellGUI = new AHSellGUI();
+
+        getCommand("ah").setExecutor(new AHCommand(ahGUI));
+        getServer().getPluginManager().registerEvents(new AHSellListener(ahManager, ahSellGUI), this);
+
+        getLogger().info("Overkill SMP Plugin loaded successfully!");
     }
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-
-        var econ = getServer().getServicesManager()
-                .getRegistration(net.milkbowl.vault.economy.Economy.class)
-                .getProvider();
-
-        double money = econ.getBalance(e.getPlayer());
-        int kills = e.getPlayer().getStatistic(org.bukkit.Statistic.PLAYER_KILLS);
-
-        MoneyScoreboard.update(e.getPlayer(), money, kills);
-    }
+    // GETTERS (optional)
+    public AHManager getAHManager() { return ahManager; }
+    public AHGUI getAHGUI() { return ahGUI; }
+    public AHSellGUI getAHSellGUI() { return ahSellGUI; }
 }

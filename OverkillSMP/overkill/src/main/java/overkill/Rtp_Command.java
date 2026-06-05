@@ -1,4 +1,4 @@
-package your.plugin.rtp;
+package overkill.rtp;
 
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class RTPCommand implements CommandExecutor {
 
-    private final int radius = 5000; // max RTP distance
+    private final int radius = 50000; // max RTP distance
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

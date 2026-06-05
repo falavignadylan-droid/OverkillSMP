@@ -1,4 +1,4 @@
-package your.plugin.spec;
+package overkill.spec;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -25,7 +25,7 @@ public class SpecCommand implements CommandExecutor {
         if (args.length == 1 && args[0].equalsIgnoreCase("off")) {
 
             if (!lastGamemode.containsKey(p.getUniqueId())) {
-                p.sendMessage("§cNon sei in modalità spectator.");
+                p.sendMessage("§cYou are not in mode spectator.");
                 return true;
             }
 
@@ -35,20 +35,20 @@ public class SpecCommand implements CommandExecutor {
             lastGamemode.remove(p.getUniqueId());
             lastLocation.remove(p.getUniqueId());
 
-            p.sendMessage("§aSei tornato alla modalità precedente.");
+            p.sendMessage("§a You came back to the previous mode.");
             return true;
         }
 
         // /spec <player>
         if (args.length != 1) {
-            p.sendMessage("§cUsa: /spec <player> oppure /spec off");
+            p.sendMessage("§cUse: /spec <player> or /spec off");
             return true;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {
-            p.sendMessage("§cQuel giocatore non è online.");
+            p.sendMessage("§cThat player is not online.");
             return true;
         }
 
@@ -60,7 +60,7 @@ public class SpecCommand implements CommandExecutor {
         p.setGameMode(GameMode.SPECTATOR);
         p.teleport(target);
 
-        p.sendMessage("§aOra stai spettando §e" + target.getName());
+        p.sendMessage("§aYou are spectating §e" + target.getName());
         return true;
     }
 }

@@ -1,6 +1,6 @@
-package me.overkill.commands;
+package overkill.commands;
 
-import me.overkill.Main;
+import overkill.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

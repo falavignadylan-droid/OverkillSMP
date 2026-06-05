@@ -1,6 +1,6 @@
-package me.overkill.listeners;
+package overkill.listeners;
 
-import me.overkill.Main;
+import overkill.Main;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;

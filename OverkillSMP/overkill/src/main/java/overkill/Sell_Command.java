@@ -1,4 +1,4 @@
-package your.plugin.sell;
+package overkill.sell;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

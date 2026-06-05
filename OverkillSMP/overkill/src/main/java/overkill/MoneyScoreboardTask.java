@@ -1,23 +1,26 @@
-package your.plugin.scoreboard;
+package overkill.scoreboard;
 
+import overkill.utils.PriceFormatter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.*;
 
-public class ScoreboardTask extends BukkitRunnable {
+public class MoneyScoreboard {
 
-    @Override
-    public void run() {
-        var econ = Bukkit.getServer().getServicesManager()
-                .getRegistration(net.milkbowl.vault.economy.Economy.class)
-                .getProvider();
+    public static void update(Player p, double money, int kills) {
 
-        for (Player p : Bukkit.getOnlinePlayers()) {
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        Scoreboard board = manager.getNewScoreboard();
 
-            double money = econ.getBalance(p);
-            int kills = p.getStatistic(org.bukkit.Statistic.PLAYER_KILLS);
+        Objective obj = board.registerNewObjective("overkill", "dummy", "§a§lOVERKILL SMP");
+        obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-            MoneyScoreboard.update(p, money, kills);
-        }
+        obj.getScore("§f").setScore(6);
+        obj.getScore("§aMoney: §e" + PriceFormatter.format(money) + "$").setScore(5);
+        obj.getScore("§f ").setScore(4);
+        obj.getScore("§aKills: §c" + kills).setScore(3);
+        obj.getScore("§f  ").setScore(2);
+
+        p.setScoreboard(board);
     }
 }
